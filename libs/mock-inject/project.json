@@ -1,0 +1,43 @@
+{
+  "name": "mock-inject",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/mock-inject/src",
+  "prefix": "angular-architects",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/mock-inject"],
+      "options": {
+        "project": "libs/mock-inject/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/mock-inject/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/mock-inject/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/mock-inject"],
+      "options": {
+        "jestConfig": "libs/mock-inject/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/mock-inject/**/*.ts",
+          "libs/mock-inject/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
